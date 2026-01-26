@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Эхо — редактор</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">Эхо</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn ghost" href="/">В ленту</a>
+        <button id="logoutBtn" class="btn danger" hidden>Выйти</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2 id="editorTitle">Новый пост</h2>
+              <div id="editorSubtitle" class="muted">Поделитесь мыслью и изображением</div>
+            </div>
+            <div id="sessionStatus" class="session muted">Сессия: проверка…</div>
+          </div>
+
+          <form id="editorForm" class="form">
+            <textarea name="text" rows="6" placeholder="О чем хотите рассказать?" required></textarea>
+            <div class="file-input">
+              <input type="file" name="image" accept="image/*" id="postImageInput" />
+              <label class="btn ghost" for="postImageInput">Выбрать изображение</label>
+              <span class="file-name" id="postImageName">Файл не выбран</span>
+            </div>
+            <input type="hidden" name="remove_image" id="removeImage" value="0" />
+            <div class="image-preview" id="postPreview" hidden>
+              <div class="image-frame">
+                <img id="postPreviewImg" alt="Предпросмотр" />
+                <div class="image-glow"></div>
+              </div>
+              <div class="image-preview-meta">
+                <div>
+                  <div class="image-name" id="postPreviewName">Новое изображение</div>
+                  <div class="image-size" id="postPreviewSize">0 KB</div>
+                </div>
+                <button type="button" class="btn ghost" id="clearPostImage">Убрать</button>
+              </div>
+            </div>
+            <div class="editor-actions">
+              <button class="btn" id="saveBtn">Сохранить</button>
+              <button type="button" class="btn danger" id="deleteBtn" hidden>Удалить</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="card">
+          <h3>Подсказки</h3>
+          <p class="muted">Редактор автоматически сохраняет предпросмотр изображения. Изображение можно заменить, выбрав новый файл.</p>
+          <p class="muted">После сохранения вы вернетесь к странице поста или в ленту.</p>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="/static/editor.js"></script>
+  </body>
+</html>

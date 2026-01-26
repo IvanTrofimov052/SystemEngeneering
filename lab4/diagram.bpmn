@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.10.1">
+  <process id="Process_1" isExecutable="false">
+    <startEvent id="Event_11jfx8j" name="пользователь открывает главную страницу">
+      <outgoing>Flow_15rtrvr</outgoing>
+    </startEvent>
+    <task id="Activity_0x0usoj" name="ситема показывает ленту и кнопку для создания поста">
+      <incoming>Flow_15rtrvr</incoming>
+      <outgoing>Flow_1jkb7zh</outgoing>
+    </task>
+    <sequenceFlow id="Flow_15rtrvr" sourceRef="Event_11jfx8j" targetRef="Activity_0x0usoj" />
+    <task id="Activity_1uhr9pv" name="пользователь кликает на кнопку &#34;создать пост&#34;">
+      <incoming>Flow_1jkb7zh</incoming>
+      <outgoing>Flow_0dvieeh</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1jkb7zh" sourceRef="Activity_0x0usoj" targetRef="Activity_1uhr9pv" />
+    <task id="Activity_1vronk8" name="система показывает экран для создания поста">
+      <incoming>Flow_0dvieeh</incoming>
+      <outgoing>Flow_1rcvdjl</outgoing>
+    </task>
+    <sequenceFlow id="Flow_0dvieeh" sourceRef="Activity_1uhr9pv" targetRef="Activity_1vronk8" />
+    <task id="Activity_1hn4fv8" name="пользователь загружает картинку и вводит текст">
+      <incoming>Flow_1rcvdjl</incoming>
+      <incoming>Flow_1m2bfly</incoming>
+      <outgoing>Flow_1pi6rbl</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1rcvdjl" sourceRef="Activity_1vronk8" targetRef="Activity_1hn4fv8" />
+    <exclusiveGateway id="Gateway_06dgxwq">
+      <incoming>Flow_1pi6rbl</incoming>
+      <outgoing>Flow_0szfhok</outgoing>
+      <outgoing>Flow_0py9qgz</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="Flow_1pi6rbl" sourceRef="Activity_1hn4fv8" targetRef="Gateway_06dgxwq" />
+    <task id="Activity_0746mjm" name="система показывает сообщение что текстовое поле поста не может быть пустое">
+      <incoming>Flow_0szfhok</incoming>
+      <outgoing>Flow_1m2bfly</outgoing>
+    </task>
+    <sequenceFlow id="Flow_0szfhok" name="тектовое поле пустое?" sourceRef="Gateway_06dgxwq" targetRef="Activity_0746mjm" />
+    <sequenceFlow id="Flow_1m2bfly" sourceRef="Activity_0746mjm" targetRef="Activity_1hn4fv8" />
+    <task id="Activity_1ghse17" name="Система создает пост">
+      <incoming>Flow_0py9qgz</incoming>
+    </task>
+    <sequenceFlow id="Flow_0py9qgz" sourceRef="Gateway_06dgxwq" targetRef="Activity_1ghse17" />
+    <startEvent id="Event_1azx9gg" name="пользователь открывает главную страницу">
+      <outgoing>Flow_13vxh57</outgoing>
+    </startEvent>
+    <task id="Activity_1o4ozd3" name="ситема показывает ленту c постами, где у каждого поста есть кнопка &#34;прокомментироватть&#34;">
+      <incoming>Flow_13vxh57</incoming>
+      <outgoing>Flow_04g2bgw</outgoing>
+    </task>
+    <task id="Activity_19bycps" name="пользователь кликает на кнопку &#34;прокоментировать&#34;">
+      <incoming>Flow_04g2bgw</incoming>
+      <outgoing>Flow_0383aco</outgoing>
+    </task>
+    <task id="Activity_1kgzh7c" name="система показывает экран для добавления комментарием">
+      <incoming>Flow_0383aco</incoming>
+      <outgoing>Flow_0kpql2u</outgoing>
+    </task>
+    <task id="Activity_0k1wdlh" name="пользователь вводит текст комментария">
+      <incoming>Flow_0kpql2u</incoming>
+      <incoming>Flow_1dhqwy1</incoming>
+      <outgoing>Flow_1nu077p</outgoing>
+    </task>
+    <exclusiveGateway id="Gateway_0cc8o9r">
+      <incoming>Flow_1nu077p</incoming>
+      <outgoing>Flow_0qes3ez</outgoing>
+      <outgoing>Flow_1n0nati</outgoing>
+    </exclusiveGateway>
+    <task id="Activity_1on9j69" name="система показывает сообщение что текстовое поле поста не может быть пустое">
+      <incoming>Flow_0qes3ez</incoming>
+      <outgoing>Flow_1dhqwy1</outgoing>
+    </task>
+    <task id="Activity_151a9c2" name="Система добавляет комментарий">
+      <incoming>Flow_1n0nati</incoming>
+    </task>
+    <sequenceFlow id="Flow_13vxh57" sourceRef="Event_1azx9gg" targetRef="Activity_1o4ozd3" />
+    <sequenceFlow id="Flow_04g2bgw" sourceRef="Activity_1o4ozd3" targetRef="Activity_19bycps" />
+    <sequenceFlow id="Flow_0383aco" sourceRef="Activity_19bycps" targetRef="Activity_1kgzh7c" />
+    <sequenceFlow id="Flow_0kpql2u" sourceRef="Activity_1kgzh7c" targetRef="Activity_0k1wdlh" />
+    <sequenceFlow id="Flow_1dhqwy1" sourceRef="Activity_1on9j69" targetRef="Activity_0k1wdlh" />
+    <sequenceFlow id="Flow_1nu077p" sourceRef="Activity_0k1wdlh" targetRef="Gateway_0cc8o9r" />
+    <sequenceFlow id="Flow_0qes3ez" name="тектовое поле пустое?" sourceRef="Gateway_0cc8o9r" targetRef="Activity_1on9j69" />
+    <sequenceFlow id="Flow_1n0nati" sourceRef="Gateway_0cc8o9r" targetRef="Activity_151a9c2" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Event_11jfx8j_di" bpmnElement="Event_11jfx8j">
+        <omgdc:Bounds x="182" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="165" y="145" width="70" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x0usoj_di" bpmnElement="Activity_0x0usoj">
+        <omgdc:Bounds x="280" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1uhr9pv_di" bpmnElement="Activity_1uhr9pv">
+        <omgdc:Bounds x="440" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vronk8_di" bpmnElement="Activity_1vronk8">
+        <omgdc:Bounds x="590" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hn4fv8_di" bpmnElement="Activity_1hn4fv8">
+        <omgdc:Bounds x="740" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06dgxwq_di" bpmnElement="Gateway_06dgxwq" isMarkerVisible="true">
+        <omgdc:Bounds x="905" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0746mjm_di" bpmnElement="Activity_0746mjm">
+        <omgdc:Bounds x="830" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ghse17_di" bpmnElement="Activity_1ghse17">
+        <omgdc:Bounds x="1020" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1b0gr7z" bpmnElement="Event_1azx9gg">
+        <omgdc:Bounds x="172" y="462" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="155" y="505" width="70" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1jx9sty" bpmnElement="Activity_19bycps">
+        <omgdc:Bounds x="430" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ayrwvi" bpmnElement="Activity_1kgzh7c">
+        <omgdc:Bounds x="580" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0vajb9f" bpmnElement="Activity_0k1wdlh">
+        <omgdc:Bounds x="730" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0gjt825" bpmnElement="Gateway_0cc8o9r" isMarkerVisible="true">
+        <omgdc:Bounds x="895" y="455" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0k2s5m8" bpmnElement="Activity_1on9j69">
+        <omgdc:Bounds x="820" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ywwlze" bpmnElement="Activity_151a9c2">
+        <omgdc:Bounds x="1010" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05c2rn9" bpmnElement="Activity_1o4ozd3">
+        <omgdc:Bounds x="270" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_15rtrvr_di" bpmnElement="Flow_15rtrvr">
+        <omgdi:waypoint x="218" y="120" />
+        <omgdi:waypoint x="280" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jkb7zh_di" bpmnElement="Flow_1jkb7zh">
+        <omgdi:waypoint x="380" y="120" />
+        <omgdi:waypoint x="440" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dvieeh_di" bpmnElement="Flow_0dvieeh">
+        <omgdi:waypoint x="540" y="120" />
+        <omgdi:waypoint x="590" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rcvdjl_di" bpmnElement="Flow_1rcvdjl">
+        <omgdi:waypoint x="690" y="120" />
+        <omgdi:waypoint x="740" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pi6rbl_di" bpmnElement="Flow_1pi6rbl">
+        <omgdi:waypoint x="840" y="120" />
+        <omgdi:waypoint x="905" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0szfhok_di" bpmnElement="Flow_0szfhok">
+        <omgdi:waypoint x="930" y="145" />
+        <omgdi:waypoint x="930" y="173" />
+        <omgdi:waypoint x="920" y="173" />
+        <omgdi:waypoint x="920" y="200" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="893" y="136" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m2bfly_di" bpmnElement="Flow_1m2bfly">
+        <omgdi:waypoint x="880" y="200" />
+        <omgdi:waypoint x="880" y="180" />
+        <omgdi:waypoint x="790" y="180" />
+        <omgdi:waypoint x="790" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0py9qgz_di" bpmnElement="Flow_0py9qgz">
+        <omgdi:waypoint x="955" y="120" />
+        <omgdi:waypoint x="1020" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1lcsxin" bpmnElement="Flow_13vxh57">
+        <omgdi:waypoint x="208" y="480" />
+        <omgdi:waypoint x="270" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0fieu72" bpmnElement="Flow_04g2bgw">
+        <omgdi:waypoint x="370" y="480" />
+        <omgdi:waypoint x="430" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0pn8y9c" bpmnElement="Flow_0383aco">
+        <omgdi:waypoint x="530" y="480" />
+        <omgdi:waypoint x="580" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_16bxbn9" bpmnElement="Flow_0kpql2u">
+        <omgdi:waypoint x="680" y="480" />
+        <omgdi:waypoint x="730" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0d3trdf" bpmnElement="Flow_1dhqwy1">
+        <omgdi:waypoint x="870" y="560" />
+        <omgdi:waypoint x="870" y="540" />
+        <omgdi:waypoint x="780" y="540" />
+        <omgdi:waypoint x="780" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_11xrbqb" bpmnElement="Flow_1nu077p">
+        <omgdi:waypoint x="830" y="480" />
+        <omgdi:waypoint x="895" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_14gub53" bpmnElement="Flow_0qes3ez">
+        <omgdi:waypoint x="920" y="505" />
+        <omgdi:waypoint x="920" y="533" />
+        <omgdi:waypoint x="910" y="533" />
+        <omgdi:waypoint x="910" y="560" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="883" y="496" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0rhzd6i" bpmnElement="Flow_1n0nati">
+        <omgdi:waypoint x="945" y="480" />
+        <omgdi:waypoint x="1010" y="480" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

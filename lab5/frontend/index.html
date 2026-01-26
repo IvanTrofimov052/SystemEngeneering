@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Эхо — социальная сеть</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">Эхо</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="refreshBtn" class="btn ghost">Обновить ленту</button>
+        <a id="loginLink" class="btn" href="/login">Войти</a>
+        <a id="registerLink" class="btn accent" href="/register">Регистрация</a>
+        <button id="logoutBtn" class="btn danger" hidden>Выйти</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel" aria-label="Профиль и создание">
+        <div class="card">
+          <h2>Профиль</h2>
+          <div id="profileBox" class="profile muted">Вы не авторизованы</div>
+          <div id="sessionStatus" class="session muted">Сессия: нет</div>
+          <div id="authHint" class="muted">
+            Чтобы публиковать, <a class="link" href="/login">войдите</a> или
+            <a class="link" href="/register">зарегистрируйтесь</a>.
+          </div>
+          <a id="newPostLink" class="btn" href="/posts/new" hidden>Создать пост</a>
+          <form id="avatarForm" class="form" hidden>
+            <label class="label">Изображение профиля</label>
+            <input type="file" name="avatar" accept="image/*" required />
+            <button class="btn">Обновить аватар</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel" id="feedPanel">
+        <div class="card">
+          <div class="card-head">
+            <h2>Лента</h2>
+            <div class="muted" id="feedMeta">0 постов</div>
+          </div>
+          <div id="feed" class="feed"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="card" id="detailCard">
+          <div class="card-head">
+            <h2>Пост</h2>
+            <button id="closeDetail" class="btn ghost" hidden>Закрыть</button>
+          </div>
+          <div id="detail" class="detail muted">Выберите пост из ленты</div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
